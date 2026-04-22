@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const priceVal = product.price || Math.floor(Math.random() * 300 + 150);
       product.price = priceVal; // Ensure product has a price
-      const priceStr = `$${priceVal}`;
+      const priceStr = `₹${priceVal}`;
 
       card.innerHTML = `
         <div class="product-img-wrapper">
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="cart-item-details">
           <div class="cart-item-header">
             <span class="cart-item-category">${item.category || 'WEAVES365'}</span>
-            <span class="cart-item-price">$${item.price}</span>
+            <span class="cart-item-price">₹${item.price}</span>
           </div>
           <div class="cart-item-title">${item.name}</div>
           <div class="cart-item-actions">
@@ -217,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
       cartItemsContainer.appendChild(itemEl);
     });
 
-    cartSubtotal.textContent = `$${total.toFixed(2)}`;
-    cartTotal.textContent = `$${total.toFixed(2)}`;
+    cartSubtotal.textContent = `₹${total.toFixed(2)}`;
+    cartTotal.textContent = `₹${total.toFixed(2)}`;
 
     // Add event listeners to buttons
     document.querySelectorAll('.qty-btn.inc').forEach(btn => {
