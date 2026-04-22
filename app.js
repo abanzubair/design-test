@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             categoryGrid.innerHTML = ''; // Clear hardcoded ones
             categoriesToRender.slice(0, 5).forEach(p => {
               const catItem = document.createElement('a');
-              catItem.href = '#';
+              catItem.href = '#product-gallery';
               catItem.className = 'category-item';
               catItem.innerHTML = `
                 <div class="category-img-wrapper">
@@ -169,11 +169,55 @@ document.addEventListener('DOMContentLoaded', () => {
                   <p class="body-md" style="font-size: 0.75rem; margin-top: 4px;">Explore Collection</p>
                 </div>
               `;
+              
+              catItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Filter products
+                allProducts = window.originalProducts.filter(item => item.category.toUpperCase() === p.category.toUpperCase());
+                currentDisplayCount = 0;
+                gallery.innerHTML = '';
+                
+                // Update section header to show filter state
+                const newInHeader = document.querySelector('#product-gallery').previousElementSibling;
+                if (newInHeader) {
+                  newInHeader.innerHTML = `
+                    <h2 class="heading-md" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                      ${p.category.toUpperCase()}
+                      <button id="clear-filter-btn" style="background: none; border: none; cursor: pointer; color: var(--text-secondary); display: flex; align-items: center; padding: 4px; border-radius: 50%; transition: background 0.3s;" title="Clear Filter">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">close</span>
+                      </button>
+                    </h2>
+                    <p class="body-md" style="margin-top: 8px;">Displaying ${allProducts.length} items</p>
+                  `;
+                  
+                  const clearBtn = document.getElementById('clear-filter-btn');
+                  if (clearBtn) {
+                    clearBtn.addEventListener('click', () => {
+                      allProducts = window.originalProducts;
+                      currentDisplayCount = 0;
+                      gallery.innerHTML = '';
+                      newInHeader.innerHTML = `
+                        <h2 class="heading-md">NEW IN <span class="material-symbols-outlined" style="color: #b77b5a; font-size: 24px; vertical-align: middle;">filter_vintage</span></h2>
+                        <p class="body-md" style="margin-top: 8px;">Fresh drops. Handpicked for you.</p>
+                      `;
+                      loadMoreProducts();
+                    });
+                  }
+                }
+                
+                loadMoreProducts();
+                
+                // Smooth scroll to gallery
+                const gallerySection = document.getElementById('product-gallery').parentElement;
+                gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              });
+              
               categoryGrid.appendChild(catItem);
             });
           }
         }
 
+        window.originalProducts = products;
         allProducts = products;
         currentDisplayCount = 0;
         gallery.innerHTML = ''; // Clear once before loading first batch
