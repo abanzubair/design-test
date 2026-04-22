@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weaves365 Admin | Sync Google Drive</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { padding: 32px; max-width: 600px; margin: 0 auto; background-color: var(--surface-container); }
+    .card { background: var(--pearl-bg); padding: 32px; border: var(--border-thick); box-shadow: var(--shadow-solid); margin-bottom: 32px; }
+    input { width: 100%; padding: 12px; margin-top: 8px; margin-bottom: 24px; border: var(--border-thick); font-family: var(--font-body); }
+    button { width: 100%; padding: 16px; background: var(--primary); color: var(--ink-text); border: var(--border-thick); font-family: var(--font-display); font-weight: bold; cursor: pointer; box-shadow: var(--shadow-solid); transition: all 0.1s; }
+    button:active { transform: translate(4px, 4px); box-shadow: none; }
+    .instruction { margin-bottom: 24px; color: var(--ash-muted); }
+  </style>
+</head>
+<body>
+  <h1 class="font-display-lg" style="margin-bottom: 32px;">DRIVE SYNC TOOL</h1>
+
+  <div class="card" style="border: 2px solid var(--primary);">
+    <h2 class="font-display-md" style="margin-bottom: 16px;">Archive Settings: Custom Photos</h2>
+    <p class="instruction font-body-md">
+      Paste Google Drive links for the two Archive photos here. This will generate a separate configuration file for your archive section.
+    </p>
+    <label class="font-label-caps">Archive Photo 1 (Obsidian)</label>
+    <input type="text" id="archiveImg1" placeholder="https://drive.google.com/file/d/1a2b3c.../view?usp=sharing">
+    <label class="font-label-caps">Archive Photo 2 (Raw Silk)</label>
+    <input type="text" id="archiveImg2" placeholder="https://drive.google.com/file/d/4d5e6f.../view?usp=sharing">
+    <button id="syncArchiveBtn" style="background: var(--ink-text); color: var(--pearl-bg);">GENERATE ARCHIVE.JS</button>
+    <p id="archiveStatusMsg" class="font-body-md" style="margin-top: 16px; text-align: center; color: var(--primary);"></p>
+  </div>
+
+
+  <div class="card">
+    <h2 class="font-display-md" style="margin-bottom: 16px;">Method 1: Paste Google Drive Share Links (Easiest)</h2>
+    <p class="instruction font-body-md">
+      No API key required! Just right-click your images in Google Drive, select "Get link" (ensure it's "Anyone with the link"), and paste them below. Paste one link per line or separate them with commas.
+    </p>
+    <textarea id="manualLinks" rows="6" placeholder="https://drive.google.com/file/d/1a2b3c.../view?usp=sharing, https://drive.google.com/file/d/4d5e6f.../view?usp=sharing" style="width: 100%; padding: 12px; margin-bottom: 16px; border: var(--border-thick); font-family: var(--font-body);"></textarea>
+    <button id="manualSyncBtn">GENERATE FROM LINKS</button>
+    <p id="manualStatusMsg" class="font-body-md" style="margin-top: 16px; text-align: center; color: var(--primary);"></p>
+  </div>
+
+  <div class="card">
+    <h2 class="font-display-md" style="margin-bottom: 16px;">Method 2: Auto-Sync via API Key (Advanced)</h2>
+    <p class="instruction font-body-md">
+      1. Go to Google Cloud Console and create a project.<br>
+      2. Enable the <strong>Google Drive API</strong>.<br>
+      3. Create an <strong>API Key</strong> in Credentials.<br>
+      4. Ensure your Google Drive folder is set to <strong>"Anyone with the link can view"</strong>.<br>
+      5. Get the Folder ID from your Drive URL (e.g., <code>drive.google.com/drive/folders/YOUR_FOLDER_ID</code>).
+    </p>
+
+  <div class="card">
+    <h3 class="font-label-caps" style="margin-bottom: 16px; margin-top: 16px;">Enter API Details</h3>
+    <label for="apiKey" class="font-label-caps">Google Cloud API Key</label>
+    <input type="text" id="apiKey" placeholder="AIzaSy...">
+
+    <label for="folderId" class="font-label-caps">Google Drive Folder ID</label>
+    <input type="text" id="folderId" placeholder="1a2b3c...">
+
+    <button id="syncBtn">GENERATE PRODUCTS.JS</button>
+    <p id="statusMsg" class="font-body-md" style="margin-top: 16px; text-align: center; color: var(--primary);"></p>
+  </div>
+
+  <script>
+    function downloadJs(products) {
+      const jsContent = "window.PRODUCTS = " + JSON.stringify(products, null, 2) + ";";
+      const blob = new Blob([jsContent], { type: 'application/javascript' });
+      const downloadUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = 'products.js';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(downloadUrl);
+    }
+
+    document.getElementById('syncArchiveBtn').addEventListener('click', () => {
+      const link1 = document.getElementById('archiveImg1').value.trim();
+      const link2 = document.getElementById('archiveImg2').value.trim();
+      const statusMsg = document.getElementById('archiveStatusMsg');
+      
+      const images = [];
+
+      [link1, link2].forEach(link => {
+        let id = null;
+        if (link) {
+          const match1 = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
+          const match2 = link.match(/id=([a-zA-Z0-9_-]+)/);
+          if (match1) id = match1[1];
+          else if (match2) id = match2[1];
+        }
+        if (id) {
+          images.push("https://lh3.googleusercontent.com/d/" + id);
+        } else {
+          images.push("");
+        }
+      });
+      
+      const jsContent = "window.ARCHIVE_IMAGES = " + JSON.stringify(images, null, 2) + ";";
+      const blob = new Blob([jsContent], { type: 'application/javascript' });
+      const downloadUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = 'archive.js';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(downloadUrl);
+      
+      statusMsg.textContent = 'Success! Save archive.js into your folder.';
+      statusMsg.style.color = 'green';
+    });
+
+
+    // Method 1: Manual Links
+    document.getElementById('manualSyncBtn').addEventListener('click', () => {
+      const text = document.getElementById('manualLinks').value.trim();
+      const statusMsg = document.getElementById('manualStatusMsg');
+      
+      if (!text) {
+        statusMsg.textContent = 'Please paste at least one link.';
+        statusMsg.style.color = 'red';
+        return;
+      }
+
+      const lines = text.split(/[\n,]+/);
+      const products = [];
+      let counter = 1;
+
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        
+        // Extract ID from different formats
+        // Format 1: /file/d/ID/view
+        // Format 2: ?id=ID
+        let id = null;
+        const match1 = line.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        const match2 = line.match(/id=([a-zA-Z0-9_-]+)/);
+        
+        if (match1) id = match1[1];
+        else if (match2) id = match2[1];
+
+        if (id) {
+          products.push({
+            id: id,
+            name: "PRODUCT " + String(counter).padStart(2, '0'),
+            category: "NEW ARRIVAL",
+            price: Math.floor(Math.random() * 300) + 150,
+            url: "https://lh3.googleusercontent.com/d/" + id
+          });
+          counter++;
+        }
+      }
+
+      if (products.length === 0) {
+        statusMsg.textContent = 'Could not find any valid Google Drive links.';
+        statusMsg.style.color = 'red';
+        return;
+      }
+
+      downloadJs(products);
+      statusMsg.textContent = 'Success! Save the downloaded products.js file into the project folder.';
+      statusMsg.style.color = 'green';
+    });
+
+    // Method 2: API Sync
+    document.getElementById('syncBtn').addEventListener('click', async () => {
+      const apiKey = document.getElementById('apiKey').value.trim();
+      let folderId = document.getElementById('folderId').value.trim();
+      
+      // If the user pastes a full folder URL, extract just the ID
+      const folderMatch = folderId.match(/folders\/([a-zA-Z0-9_-]+)/);
+      if (folderMatch) {
+        folderId = folderMatch[1];
+      }
+      
+      const statusMsg = document.getElementById('statusMsg');
+
+      if (!apiKey || !folderId) {
+        statusMsg.textContent = 'Please enter both API Key and Folder ID.';
+        statusMsg.style.color = 'red';
+        return;
+      }
+
+      statusMsg.textContent = 'Fetching images from Google Drive...';
+      statusMsg.style.color = 'var(--ink-text)';
+
+      try {
+        const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType+contains+'image/'&fields=files(id,name,thumbnailLink)&key=${apiKey}`;
+        
+        const response = await fetch(url);
+        if (!response.ok) {
+          const err = await response.json();
+          throw new Error(err.error.message);
+        }
+
+        const data = await response.json();
+        
+        if (!data.files || data.files.length === 0) {
+          statusMsg.textContent = 'No images found in this folder. Make sure the folder is public.';
+          statusMsg.style.color = 'red';
+          return;
+        }
+
+        // Transform data
+        const products = data.files.map((file, index) => {
+          return {
+            id: file.id,
+            name: file.name.replace(/\.[^/.]+$/, "").toUpperCase(), // Remove extension
+            category: "NEW ARRIVAL",
+            price: Math.floor(Math.random() * 300) + 150, // Dummy price
+            url: "https://lh3.googleusercontent.com/d/" + file.id
+          };
+        });
+
+        // Trigger download
+        downloadJs(products);
+
+        statusMsg.textContent = 'Success! Save the downloaded products.js file into this folder to update your website.';
+        statusMsg.style.color = 'green';
+
+      } catch (error) {
+        console.error(error);
+        statusMsg.textContent = 'Error: ' + error.message;
+        statusMsg.style.color = 'red';
+      }
+    });
+  </script>
+</body>
+</html>

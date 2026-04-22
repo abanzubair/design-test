@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>weave365 | Vibrant Modernist Showcase</title>
+  <meta name="description" content="A high-fashion, high-energy storefront for contemporary sarees." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Top Navigation Anchor -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <button class="nav-btn material-symbols-outlined mobile-only" aria-label="Menu">menu</button>
+      <div class="logo font-display-lg" style="font-style: italic; font-size: 1.5rem;">weave365</div>
+    </div>
+
+    <div class="nav-center desktop-only">
+      <a href="#" class="nav-link active">SAREES</a>
+      <a href="#" class="nav-link">DRAPE EDITORIAL</a>
+      <a href="#" class="nav-link">COLLECTIONS</a>
+      <a href="#" class="nav-link">THE STUDIO</a>
+    </div>
+
+    <div class="nav-right" style="display: flex; gap: 16px;">
+      <button class="nav-btn material-symbols-outlined" id="nav-cart-btn"
+        aria-label="Shopping Bag">shopping_bag</button>
+      <button class="nav-btn material-symbols-outlined" aria-label="User Profile">person</button>
+    </div>
+  </header>
+
+  <main id="app-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-img-wrapper" id="hero-img-container">
+
+        <!-- OPTION 1: For a Video, uncomment the line below and paste your link -->
+        <video src="C:\Users\abanz\Downloads\catalogue\video\saree hero.mp4" autoplay loop muted playsinline
+          style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
+
+        <!-- OPTION 2: For an Image, uncomment the line below and paste your link -->
+        <!-- <img src="PASTE_YOUR_IMAGE_LINK_HERE" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"> -->
+
+        <div class="hero-floating-card">
+          <span class="font-label-caps" style="color: var(--ash-muted); font-size: 0.6rem;">FALL 2024</span>
+          <h2 class="font-display-lg" style="font-style: italic; font-size: 1.5rem; margin-top: 4px;">
+            AVANT-GARDE<br>TRADITION</h2>
+        </div>
+      </div>
+      <div class="hero-text-wrapper">
+        <h1 class="font-display-xl vertical-text">THE FESTIVAL EDIT</h1>
+      </div>
+    </section>
+
+    <!-- Signature Marquee -->
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <span class="font-label-caps font-display-lg" style="font-style: italic; font-size: 1rem;">NEW ARRIVALS • NEW
+          ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • </span>
+        <span class="font-label-caps font-display-lg" style="font-style: italic; font-size: 1rem;">NEW ARRIVALS • NEW
+          ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • </span>
+      </div>
+    </div>
+
+    <!-- Asymmetrical Editorial Grid -->
+    <section class="grid grid-cols-2 craft-section">
+      <div class="col-span-1 feature-block craft-text-block" style="border-right: var(--border-thick);">
+        <div>
+          <h2 class="font-display-xl" style="font-size: 4rem; letter-spacing: -0.05em;">CRAFTS</h2>
+          <p class="font-body-md" style="margin-top: 24px; max-width: 400px; color: var(--ash-muted);">Rejecting the
+            mass-produced. Our looms breathe life into ancient techniques through a lens of raw, contemporary rebellion.
+            Every thread is a statement of unapologetic heritage.</p>
+        </div>
+        <button class="outline-btn" style="margin-top: 48px; align-self: flex-start;">THE MAKING OF weave365</button>
+      </div>
+      <div class="col-span-1 relative craft-img-block" id="feature-img-container">
+        <!-- Paste your video link here -->
+        <video src="C:\Users\abanz\Downloads\catalogue\video\saree-hero2.mp4" autoplay loop muted playsinline
+          style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></video>
+      </div>
+    </section>
+
+    <!-- Archive Section -->
+    <section class="grid grid-cols-2 archive-section">
+      <div class="col-span-1 archive-gallery">
+        <h2 class="font-display-xl" style="color: var(--primary); font-style: italic; margin-bottom: 32px;">ARCHIVE</h2>
+        <div class="archive-cards">
+          <div class="archive-card">
+            <span class="sold-out-badge">SOLD OUT</span>
+            <div class="archive-img placeholder-img-1"></div>
+            <h3 class="font-label-caps" style="color: var(--pearl-bg); margin-top: 16px;">VOL 01: THE OBSIDIAN</h3>
+          </div>
+          <div class="archive-card archive-card-offset">
+            <div class="archive-img placeholder-img-2"></div>
+            <h3 class="font-label-caps" style="color: var(--pearl-bg); margin-top: 16px;">VOL 02: RAW SILK</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-1 archive-text-block">
+        <div style="border-top: 2px solid var(--primary); padding-top: 24px; width: 100%; max-width: 400px;">
+          <h2 class="font-display-lg" style="color: var(--pearl-bg); font-size: 2.5rem; line-height: 1.1;">
+            LIMITED<br>RELEASES<br>FROM THE<br>VAULT.</h2>
+          <button class="outline-btn"
+            style="color: var(--pearl-bg); border-color: var(--pearl-bg); margin-top: 48px;">VIEW ALL ARCHIVES</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Block Masonry (Kept for functionality) -->
+    <div style="background: var(--pearl-bg); border-top: var(--border-thick);">
+      <h2 class="font-display-lg"
+        style="text-align: center; padding: 48px 0; font-style: italic; border-bottom: var(--border-thick);">SHOP THE
+        RUNWAY</h2>
+      <section class="gallery-grid" id="product-gallery">
+        <!-- Products dynamically inserted here -->
+      </section>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <h2 class="font-display-xl" style="text-align: center; font-size: 4rem;">JOIN THE<br>REBELLION</h2>
+      <div class="newsletter-form">
+        <input type="email" placeholder="EMAIL@ADDRESS.COM" class="newsletter-input">
+        <button class="newsletter-btn">SUBSCRIBE</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Desktop Footer -->
+  <footer class="desktop-footer">
+    <div class="footer-top">
+      <div>
+        <h2 class="font-display-md" style="font-style: italic; color: var(--pearl-bg);">weave365</h2>
+        <p class="font-label-caps" style="color: var(--primary); margin-top: 8px;">BOLD TRADITION. UNAPOLOGETIC STYLE.
+        </p>
+      </div>
+      <div class="footer-links font-label-caps">
+        <a href="#">PRIVACY</a>
+        <a href="#">SHIPPING</a>
+        <a href="#">STORES</a>
+        <a href="#">PRESS</a>
+        <a href="#">CAREERS</a>
+        <span style="color: var(--ash-muted); margin-left: 24px; font-size: 0.6rem;">©2024 weave365. ALL RIGHTS
+          RESERVED.</span>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- Product Modal -->
+  <div class="product-modal" id="product-modal">
+    <div class="modal-header">
+      <span class="font-label-caps" id="modal-category">CATEGORY</span>
+      <button class="nav-btn material-symbols-outlined" id="close-modal" aria-label="Close">close</button>
+    </div>
+    <div class="modal-content">
+      <img src="" id="modal-image" class="modal-img" alt="Product Image">
+      <div class="modal-details">
+        <h2 class="font-display-lg" id="modal-title">Product Name</h2>
+        <p class="font-body-md" style="margin-top: 16px; color: var(--ash-muted);">Hand-woven silk with bold modernist
+          patterns.</p>
+
+      </div>
+    </div>
+    <div class="modal-footer" id="add-to-bag">
+      <span class="font-button-text" style="color: var(--ink-text);">ADD TO BAG - $<span
+          id="modal-price">0</span></span>
+    </div>
+  </div>
+
+  <!-- Cart Sidebar & Overlay -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <span class="font-body-md" style="font-weight: 500;">YOUR BAG</span>
+      <button class="nav-btn material-symbols-outlined" id="close-cart" aria-label="Close Cart"
+        style="color: var(--pearl-bg); border: 1px solid rgba(255,255,255,0.2);">close</button>
+    </div>
+
+    <div class="cart-announcement">
+      <span class="font-label-caps" style="color: var(--ink-text); font-weight: 700;">SHIPPING ON ALL ORDERS ABOVE $500
+        — COMPLIMENTARY</span>
+    </div>
+
+    <div class="cart-content" id="cart-items">
+      <!-- Cart items injected here -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-summary font-body-md">
+        <div class="summary-line">
+          <span style="color: var(--ash-muted);">SUBTOTAL</span>
+          <span id="cart-subtotal" style="font-weight: bold; color: var(--pearl-bg);">$0.00</span>
+        </div>
+        <div class="summary-line" style="margin-top: 16px;">
+          <span style="color: var(--ash-muted);">SHIPPING</span>
+          <span style="color: var(--primary); font-weight: bold;">COMPLIMENTARY</span>
+        </div>
+      </div>
+      <div class="cart-total font-body-md">
+        <div style="display: flex; flex-direction: column;">
+          <span style="color: var(--ash-muted);">TOTAL (USD)</span>
+          <span style="font-weight: bold; font-size: 1.25rem; color: var(--pearl-bg); margin-top: 4px;"
+            id="cart-total">$0.00</span>
+        </div>
+        <div style="text-align: right; color: var(--ash-muted); font-size: 0.875rem;">
+          TAX<br>CALCULATED AT<br>CHECKOUT
+        </div>
+      </div>
+      <div style="padding: 0 24px 24px 24px;">
+        <button class="checkout-btn" id="checkout-btn">CHECKOUT &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="archive.js"></script>
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

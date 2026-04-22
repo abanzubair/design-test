@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800;900&amp;family=Space_Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "primary-container": "#e6b800",
+                    "pitch-surface": "#111111",
+                    "secondary": "#3456c1",
+                    "inverse-primary": "#f0c115",
+                    "on-secondary-fixed-variant": "#133ca8",
+                    "surface-variant": "#ebe1d1",
+                    "on-surface": "#1f1b11",
+                    "on-secondary-container": "#00257b",
+                    "on-tertiary-container": "#005278",
+                    "surface-container": "#f6eddc",
+                    "on-surface-variant": "#4e4633",
+                    "outline": "#807660",
+                    "on-primary-container": "#5e4a00",
+                    "ash-muted": "#8C8C8C",
+                    "background": "#fff8f1",
+                    "on-primary-fixed": "#241a00",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#718ffd",
+                    "on-tertiary-fixed": "#001e2f",
+                    "inverse-surface": "#353025",
+                    "on-error": "#ffffff",
+                    "pearl-bg": "#F9F9F7",
+                    "on-primary-fixed-variant": "#574400",
+                    "tertiary-fixed": "#c9e6ff",
+                    "surface": "#fff8f1",
+                    "surface-tint": "#745b00",
+                    "tertiary": "#006492",
+                    "surface-dim": "#e2d9c8",
+                    "on-background": "#1f1b11",
+                    "tertiary-container": "#74c6ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#001550",
+                    "on-tertiary-fixed-variant": "#004b6f",
+                    "primary-fixed": "#ffe08a",
+                    "surface-container-highest": "#ebe1d1",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#745b00",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#f0c115",
+                    "surface-bright": "#fff8f1",
+                    "surface-container-low": "#fcf3e1",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#b6c4ff",
+                    "outline-variant": "#d1c5ac",
+                    "secondary-fixed": "#dce1ff",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#f1e7d6",
+                    "inverse-on-surface": "#f9f0df",
+                    "ink-text": "#050505",
+                    "tertiary-fixed-dim": "#8bceff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-xs": "8px",
+                    "content-padding": "20px",
+                    "stack-lg": "32px",
+                    "stack-md": "16px",
+                    "edge-margin": "0px",
+                    "stack-xl": "64px"
+            },
+            "fontFamily": {
+                    "body-md": ["Space Grotesk"],
+                    "display-xl": ["Epilogue"],
+                    "button-text": ["Epilogue"],
+                    "display-lg": ["Epilogue"],
+                    "label-caps": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "display-xl": ["48px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "button-text": ["16px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                    "display-lg": ["32px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: fit-content;
+            animation: marquee 20s linear infinite;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-pearl-bg text-ink-text font-body-md overflow-x-hidden selection:bg-primary-container">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-[#F8F8F8] dark:bg-[#111111] border-b-2 border-neutral-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-neutral-900 hover:bg-[#E6B800] hover:text-white transition-colors duration-100 p-2 active:translate-x-1 active:translate-y-1 active:shadow-none">menu</button>
+</div>
+<div class="text-2xl font-black tracking-tighter text-neutral-900 font-['Epilogue'] uppercase">weaves365</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-neutral-900 hover:bg-[#E6B800] hover:text-white transition-colors duration-100 p-2 active:translate-x-1 active:translate-y-1 active:shadow-none">shopping_bag</button>
+</div>
+</header>
+<main class="pt-16 pb-20">
+<!-- Hero Section: Split-Screen Asymmetrical -->
+<section class="h-[707px] flex flex-row overflow-hidden border-b-2 border-ink-text">
+<div class="w-[60%] relative h-full">
+<img class="w-full h-full object-cover grayscale-[0.2] contrast-125" data-alt="Stunning editorial shot of a woman in a vibrant silk saree, dramatic side lighting, high contrast shadows, modernist architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWbgswKLpC2Aliu0rtKyDAUT9ltxLnOJ8XBI-BnWUyPDXOcdaBUCxP6KQZIopJhFS6yLCFo8x8lhNBPH8nrC6N1KxwU4y2HMrKZYSMsHQsOHdavMpAB4_qsnFkNOU0e_UQi1BkGQa2l8BLslBUSYB7mgCmpHz-ujPB0FZbPUdfve4Mbwrpbuh4nS2eIthx-J-yHVIVL8qkVAzcgQfhzeJ12twUsDNCUchIdCGbeBwuU11IExiI1eiW-11MlHMdaWKcm-0sju1J09tc"/>
+</div>
+<div class="w-[40%] bg-primary-container flex items-center justify-center relative">
+<h1 class="font-display-xl text-ink-text vertical-text uppercase tracking-tight text-right leading-none transform translate-x-4">
+                    THE FESTIVAL EDIT
+                </h1>
+</div>
+</section>
+<!-- Signature Marquee -->
+<div class="bg-pitch-surface py-4 overflow-hidden border-b-2 border-ink-text">
+<div class="animate-marquee whitespace-nowrap">
+<span class="text-pearl-bg font-label-caps text-2xl px-4">NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • </span>
+<span class="text-pearl-bg font-label-caps text-2xl px-4">NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • NEW ARRIVALS • </span>
+</div>
+</div>
+<!-- Asymmetrical Editorial Grid -->
+<section class="grid grid-cols-2 gap-0 border-b-2 border-ink-text">
+<!-- Grid Item 1: Large Feature -->
+<div class="col-span-1 border-r-2 border-ink-text bg-surface-container relative">
+<div class="p-stack-md flex flex-col justify-between h-full">
+<div>
+<span class="font-label-caps text-primary">CRAFTSMANSHIP</span>
+<h2 class="font-display-lg mt-2">HANDLOOM MODERNISM</h2>
+</div>
+<p class="font-body-md mt-stack-lg max-w-[80%]">Redefining the traditional drape through bold color blocking and structural silhouettes. Each piece is a digital-first interpretation of ancient weaving.</p>
+</div>
+</div>
+<!-- Grid Item 2: Image Highlighting Detail -->
+<div class="col-span-1 relative h-64 md:h-96">
+<img class="w-full h-full object-cover" data-alt="Close-up of vibrant textile patterns, metallic gold threads woven into electric blue silk, sharp focus, editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMS94DEnZbtYMei9-HyYF7hTpyQRTukQ2WHMkQl3pRkfPWJRCL_MJuxfe45IRIUhQnxxfi1BmiVjkFa0YQC6bYNLRzvL_M_HUchFGRaoOOJNNY0Dkmth8KFDx5sUnLmDGoionFZ3I9Y_77HE_fycxMm7NQkYki0Rs-0D5GPVZWX7_TuySNqFcTuGo8XIUUF4IZluQ2DfGv0440Dx9DZP8S0eo5iDi7aweh4NyEg46dpEBpG2KXfWr2Saf2CT0z7uHsBzsi6s0TjXP_"/>
+</div>
+<!-- Grid Item 3: Full Width Visual -->
+<div class="col-span-2 relative h-[442px] border-t-2 border-ink-text overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Model in an avant-garde saree pose against a harsh industrial background, high fashion aesthetic, vibrant colors, minimalist composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtIFmtRp8lFVH62UARy2jUBeyVvdg5YRLh9LF5TfkP_e5fOLPPpOp8mmmQzM5s5ZQainRySlXKBkUXSWgDX4UI6j0EoYsyfZpPny3pRfR2EpFTXMHjdjKoEWA2siu7hFUCMZSiKpF2LQpOGi8EoIw5LlglHT9i5glXveod6nl-WOxML_eQ0dEUu2jX0H9ICt0ZZHSeRCHLIaXbVWsReSa8R-2b0NGTwI6mcEtWDMikq2M-AP5ei3FJRSro9gZtjkRFx3E9WyKXmgIQ"/>
+<div class="absolute bottom-0 right-0 bg-secondary p-8 shadow-[-4px_-4px_0px_0px_rgba(0,0,0,1)]">
+<p class="text-pearl-bg font-display-lg uppercase italic">ARCHIVE 01</p>
+</div>
+</div>
+</section>
+<!-- Product Block Masonry -->
+<section class="grid grid-cols-2">
+<div class="border-r-2 border-ink-text relative group">
+<div class="aspect-[3/4] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Luxury saree in Klein Blue silk displayed on a minimalist hanger against a white gallery wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbUGhX0mKTS-sQNEnor5b3_Zk8QEl0btxNSJidUxCRUTx7GEIhS2pjoCD_UMKPRvOu7JTpAF7_x-cM-IahpEgyRIs4Bcqzm6yeDA8yHAH9wfRa3dM0fcBOqwwQ9AnY3qkLr9NezFKfmHd2gaDFXFF1MDSiuTokEf08u36-5rJzEbJpBW2UH4N4Ov6ic2VXg38cLPRJBCIvv-TLxmcCMnMg19VOskoP4--zu4Xsr4xcSqw5iWLi9dXTEQmq1nop29aiF4kzmm9RdfY9"/>
+</div>
+<div class="bg-primary-container absolute top-0 right-0 p-3 font-label-caps border-l-2 border-b-2 border-ink-text">
+                    $450
+                </div>
+<div class="p-4 bg-pearl-bg border-t-2 border-ink-text">
+<h3 class="font-label-caps text-sm">THE NEON DRAPE</h3>
+<p class="font-body-md text-ash-muted">KANCHIPURAM SILK</p>
+</div>
+</div>
+<div class="relative group">
+<div class="aspect-[3/4] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Stunning model in a deep magenta saree with minimalist gold border, studio lighting, brutalist concrete set" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb82IzoBAFQtWoPFY97RfYnt9Vj3MzAZf34hPzYg3D099ZYwjL3zoDGC14_b-IJOeDjF5haUHrzDV5HfF9pE-9ve0jujHUPXpoNgNAdqCbsWNm_MvfgsSWnppQ5GBglW_HZUHlzvqIOY_KO0mU1H-sqzQt5R-bTJ7Xj7b4hgPOkte6ekYkO3HupkauKZqk-VVe78vMTQVAzy72UrYuWyLZsB2fHauldL5c_5NQqvC4l5gA-NnZK8ttkpA9cNv4tJ9qKGtRfY4r4fb_"/>
+</div>
+<div class="bg-primary-container absolute top-0 right-0 p-3 font-label-caps border-l-2 border-b-2 border-ink-text">
+                    $380
+                </div>
+<div class="p-4 bg-pearl-bg border-t-2 border-ink-text">
+<h3 class="font-label-caps text-sm">MONOLITH MAGENTA</h3>
+<p class="font-body-md text-ash-muted">HAND-WOVEN COTTON</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-16 h-16 bg-secondary text-pearl-bg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all z-50">
+<span class="font-button-text uppercase tracking-widest text-xs">SHOP</span>
+</button>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-stretch h-20 bg-[#F8F8F8] dark:bg-[#111111] border-t-2 border-neutral-900 shadow-none">
+<a class="bg-[#E6B800] text-neutral-900 h-full flex flex-col items-center justify-center px-4 flex-1" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase tracking-widest">DISCOVER</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-900 dark:text-neutral-50 px-4 flex-1 hover:bg-[#E6B800]/10 transition-all duration-75" href="#">
+<span class="material-symbols-outlined">view_quilt</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase tracking-widest">CURATED</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-900 dark:text-neutral-50 px-4 flex-1 hover:bg-[#E6B800]/10 transition-all duration-75" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase tracking-widest">WISHLIST</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-900 dark:text-neutral-50 px-4 flex-1 hover:bg-[#E6B800]/10 transition-all duration-75" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase tracking-widest">ACCOUNT</span>
+</a>
+</nav>
+</body></html>
