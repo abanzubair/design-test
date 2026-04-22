@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const phoneNumber = "919919101370";
+      const phoneNumber = "919919101369";
       let message = "Hello, I want to inqure about these products\n\n";
 
       cart.forEach((item, index) => {
