@@ -87,6 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (heroSection) {
               heroSection.style.backgroundImage = `url('${imageUrl}')`;
             }
+          } else if (category.toUpperCase() === "BESTSELLER" || category.toUpperCase() === "BESTSELLERS") {
+            if (!window.bestsellerProducts) window.bestsellerProducts = [];
+            window.bestsellerProducts.push({
+              id: id || `prod_${i}`,
+              name: name || "UNTITLED",
+              category: category || "BESTSELLER",
+              price: price || 150,
+              url: imageUrl
+            });
           } else {
             products.push({
               id: id || `prod_${i}`,
@@ -99,7 +108,72 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      // Render Bestsellers
+      const bestsellerGallery = document.getElementById('bestseller-gallery');
+      if (bestsellerGallery && window.bestsellerProducts && window.bestsellerProducts.length > 0) {
+        bestsellerGallery.innerHTML = ''; // Clear static placeholders
+        window.bestsellerProducts.forEach((product) => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          const priceVal = product.price || Math.floor(Math.random() * 300 + 150);
+          product.price = priceVal;
+          const priceStr = `₹${priceVal}`;
+
+          // Random rating for effect
+          const ratingScore = (Math.random() * (5.0 - 4.5) + 4.5).toFixed(1);
+          const reviewCount = Math.floor(Math.random() * 300) + 50;
+
+          card.innerHTML = `
+            <button class="wishlist-btn"><span class="material-symbols-outlined">favorite_border</span></button>
+            <div class="product-img-wrapper">
+              <img src="${product.url}" alt="${product.name}" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">${product.name}</h3>
+              <span class="product-price">${priceStr}</span>
+              <div class="rating"><span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">star</span> ${ratingScore} (${reviewCount})</div>
+            </div>
+          `;
+          card.addEventListener('click', () => openModal(product));
+          bestsellerGallery.appendChild(card);
+        });
+      }
+
       if (products.length > 0) {
+        // Render Categories dynamically
+        const categoryGrid = document.querySelector('.category-grid');
+        if (categoryGrid) {
+          const uniqueCategories = {};
+          products.forEach(p => {
+            const cat = p.category.toUpperCase();
+            if (cat && cat !== 'NEW ARRIVAL' && cat !== 'HERO' && cat !== 'BESTSELLER' && cat !== 'BESTSELLERS') {
+              if (!uniqueCategories[cat]) {
+                uniqueCategories[cat] = p;
+              }
+            }
+          });
+
+          const categoriesToRender = Object.values(uniqueCategories);
+          if (categoriesToRender.length > 0) {
+            categoryGrid.innerHTML = ''; // Clear hardcoded ones
+            categoriesToRender.slice(0, 5).forEach(p => {
+              const catItem = document.createElement('a');
+              catItem.href = '#';
+              catItem.className = 'category-item';
+              catItem.innerHTML = `
+                <div class="category-img-wrapper">
+                  <img src="${p.url}" alt="${p.category}">
+                </div>
+                <div class="center">
+                  <h3 class="category-title">${p.category}</h3>
+                  <p class="body-md" style="font-size: 0.75rem; margin-top: 4px;">Explore Collection</p>
+                </div>
+              `;
+              categoryGrid.appendChild(catItem);
+            });
+          }
+        }
+
         allProducts = products;
         currentDisplayCount = 0;
         gallery.innerHTML = ''; // Clear once before loading first batch
