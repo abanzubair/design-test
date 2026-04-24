@@ -98,12 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const imageUrl = id ? "https://lh3.googleusercontent.com/d/" + id : actualLink;
 
-          if (category.toUpperCase() === "HERO" || name.toUpperCase() === "HERO") {
-            const heroImg = document.querySelector('.hero-bg-img');
-            if (heroImg) {
-              heroImg.src = imageUrl;
-            }
-          } else if (category.toUpperCase() === "BESTSELLER" || category.toUpperCase() === "BESTSELLERS") {
+          // Hero logic removed to use hardcoded asset in index.html
+          if (category.toUpperCase() === "BESTSELLER" || category.toUpperCase() === "BESTSELLERS") {
             if (!window.bestsellerProducts) window.bestsellerProducts = [];
             window.bestsellerProducts.push({
               id: id || `prod_${i}`,
