@@ -12,7 +12,9 @@
 <body>
   <!-- Top Announcement Bar -->
   <div class="top-bar">
-    FREE SHIPPING ON PREPAID ORDERS | COD AVAILABLE
+    <span class="top-bar-icon">✦</span>
+    <span>FREE SHIPPING ON PREPAID ORDERS | COD AVAILABLE</span>
+    <span class="top-bar-icon">✦</span>
   </div>
 
   <!-- Navbar -->
@@ -26,8 +28,8 @@
 
     <div class="nav-center desktop-only">
       <a href="#" class="nav-link active">Sarees</a>
-      <a href="#" class="nav-link">New In</a>
-      <a href="#" class="nav-link">Bestsellers</a>
+      <a href="#product-gallery" class="nav-link">New In</a>
+      <a href="#bestseller-gallery" class="nav-link">Bestsellers</a>
       <a href="#" class="nav-link">Collections</a>
       <a href="#" class="nav-link">Occasions</a>
       <a href="#" class="nav-link">Sale</a>
@@ -52,6 +54,7 @@
   <main id="app-content">
     <!-- Hero Section -->
     <section class="hero">
+      <img class="hero-bg-img" src="" alt="Hero Saree">
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <div class="hero-text">
@@ -323,14 +326,24 @@
   <script src="app.js"></script>
   <script>
     // Simple navbar scroll effect
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('navbar');
-      if (window.scrollY > 50) {
+    const nav = document.getElementById('navbar');
+    function handleScroll() {
+      const scrollY = window.scrollY;
+      
+      if (scrollY <= 32) {
+        nav.style.transform = `translateY(-${scrollY}px)`;
+      } else {
+        nav.style.transform = `translateY(-32px)`;
+      }
+
+      if (scrollY > 50) {
         nav.classList.add('scrolled');
       } else {
         nav.classList.remove('scrolled');
       }
-    });
+    }
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
   </script>
 </body>
 

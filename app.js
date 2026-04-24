@@ -83,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const imageUrl = id ? "https://lh3.googleusercontent.com/d/" + id : link;
 
           if (category.toUpperCase() === "HERO" || name.toUpperCase() === "HERO") {
-            const heroSection = document.querySelector('.hero');
-            if (heroSection) {
-              heroSection.style.backgroundImage = `url('${imageUrl}')`;
+            const heroImg = document.querySelector('.hero-bg-img');
+            if (heroImg) {
+              heroImg.src = imageUrl;
             }
           } else if (category.toUpperCase() === "BESTSELLER" || category.toUpperCase() === "BESTSELLERS") {
             if (!window.bestsellerProducts) window.bestsellerProducts = [];
